@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Sevillana&display=swap');
+
+h1 {
+  color: #fff;
+}
+
+.card-body {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.book-list .card img {
+  height: 300px;
+}
+
+.book-list .card {
+  padding:0 20px
+}
+
+.book-list .card-body {
+  height: 200px;
+
+}
+
+.book-list .card-title {
+  font-size: 20px;
+  max-height: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
