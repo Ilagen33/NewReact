@@ -1,18 +1,17 @@
+//IMPORT: CSS vabilla e Bootstrap
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyNav from "./Components/MyNav";
+
+//IMPORT: (dai componenti) footer e funziona principale
 import MyFooter from "./Components/MyFooter";
-import Welcome from "./Components/Welcome";
 import Genres from "./Components/AllTheBooks";
 
 function App() {
   return (
-    <div>
-      <main>
-          <Genres />
-      </main> 
+    <>
+      <Genres /> 
       <MyFooter />
-    </div>
+    </>
   );
 }
 

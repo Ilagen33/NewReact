@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 function Welcome() {
     const [show, setShow] = useState(true);
     return(
-        <div className="mx-2">
+        <section className="JUMBOTRON mx-2">
             <h1>Welcome on Epi-Books!</h1>
 
             <Alert show={show} variant="info">
@@ -23,7 +23,7 @@ function Welcome() {
             </Alert>
 
             {!show && <Button onClick={() => setShow(true)} variant="outline-info" className='mx-2'>Raed our Message for You!</Button>}
-        </div>
+        </section>
     )
 }
 
