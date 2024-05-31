@@ -1,24 +1,33 @@
+//IMPORT REACT E USESTATE
 import React, { useState } from "react";
+
+//IMPORT BOOTSTRAP
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+//Funzione principale
+function MyNav({ setSearch, setNumToShow }) {
 
-function MyNav({ startSearch }) {
+  {/*Creo uno stato per tener traccio di ciò che viene scritto nella Search bar, utilizzato in seguito per una funzionalità di ricerca*/}
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleInputChange = (e) => {
-      setSearchTerm(e.target.value);
-  };
-
+  {/* Creo una funziona che gestisce il submit della ricerca (sia l'invio della tastiera nel form input sia sul tasto di ricerca)
+      1) Evito il comportamento di default all'invio del form, per evitare di refreshare la pagina;
+      2) Imposto come valore da ricercare ciò che viene scritto nel form;
+      3) Riporto il numero di libri renderizzati a 12, (se in precedenza si clicca su Carica Altro si va ad aumentare la quantità di libri da caricare,
+      al momento della ricerca non refreshando la pagina ilnumero rimane invariato, per questo motivo ri riporta questo numero al suo valore originale*/}
   const handleSubmit = (e) => {
       e.preventDefault();
-      startSearch(searchTerm);
-  };
+      setSearch(searchTerm);
+      setNumToShow(12);
+    };
 
   return (
+
+    //La funzione in generale ritorna una navbar di Boostrap con all'interno un form per effettuare una ricerca
     <header>
       <Navbar expand="lg" className="bg-black text-white">
         <Container fluid>
@@ -48,7 +57,7 @@ function MyNav({ startSearch }) {
                 className="me-2"
                 aria-label="Search"
                 value={searchTerm}
-                onChange={handleInputChange}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
               <Button variant="outline-light" onClick={handleSubmit} type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
