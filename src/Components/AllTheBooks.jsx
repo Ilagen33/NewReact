@@ -28,9 +28,10 @@ function Genres() {
 const [selectedGenre, setSelectedGenre] = useState(null); // Genere selezionato
 const [search, setSearch] = useState(''); // Ricerca
 const [numToShow, setNumToShow] = useState(12); // Numero iniziale di libri da mostrare = 12   
-    
+// const [changeTheme, setChangeTheme] = useContext(Theme);
+
     return (
-        <>  
+        <main>  
             {/*Aggiungo la NAV*/}
             <MyNav setSearch={setSearch} setNumToShow={setNumToShow}/>
 
@@ -49,7 +50,7 @@ const [numToShow, setNumToShow] = useState(12); // Numero iniziale di libri da m
                     <button onClick={() => {setSelectedGenre(null); setNumToShow(12)}} className="btn btn-outline-info mb-3 mx-2">
                         Torna ai generi
                     </button>
-                    <div className="book-list mt-5 container mx-2">
+                    <div className="book-list mt-5 container-fluid mx-2">
                         <div className="row">
                             {/*Vengono passate le informazioni: sul genere, su ciò che è scritto nel campo di ricerca, e quanti libri mostrare;
                             poichè sono state incluse delle funzionalità basate su queste informazioni*/}
@@ -70,7 +71,7 @@ const [numToShow, setNumToShow] = useState(12); // Numero iniziale di libri da m
             ) : (
                 <RenderGenres generi={generi} selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} />
             )}
-        </>
+        </main>
     )
 }
 

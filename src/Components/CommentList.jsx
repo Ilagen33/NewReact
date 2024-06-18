@@ -1,5 +1,5 @@
 // IMPORT REACT E USESTATE
-import React, { useState } from "react";
+import React from "react";
 import SingleComment from "./SingleComment";
 import AddComment from "./AddComment"
 
@@ -7,20 +7,20 @@ import AddComment from "./AddComment"
 import Accordion from 'react-bootstrap/Accordion';
 
 // Funzione principale
-function CommentList ({comments}) {
+function CommentList ({comments, book, startComments}) {
     return (
         <>
-            <Accordion defaultActiveKey="0">
+            <Accordion defaultActiveKey="0" alwaysOpen>
                 {comments.map((comment, index) => (
                     <Accordion.Item eventKey={index.toString()} key={index}>
                         <Accordion.Header>Comment {index + 1}</Accordion.Header>
                         <Accordion.Body>
-                            <SingleComment {...comment} />
+                            <SingleComment comment={comment} startComments={startComments} />
                         </Accordion.Body>
                     </Accordion.Item>
                 ))}
             </Accordion>
-            <AddComment />
+            <AddComment book={book} startComments={startComments}/>
         </>
     );
 }

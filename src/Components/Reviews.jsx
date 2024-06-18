@@ -4,18 +4,21 @@ import React, { useState } from "react";
 
 //IMPORT COMPONENTI
 import CommentList from "./CommentList"
+import Get from "./api/get"
 
+//Funzione Principale
 function CommentArea (book) {
+    //Definisco gli use state, il primo lo uso per il Get e il secondo per il Post
     const [comments, setComments] = useState([]);
-    useEffect(() => {
-        console.log(book)
-        fetch(`https://striveschool-api.herokuapp.com/api/books/${book}/comments/`)
-        .then(response => response.json())
-        .then(data => setComments(data) )
-    }, []);
 
+    function startComments() {
+        Get({setComments, book})
+    }
+    useEffect(() => {
+        startComments()
+    }, [book]);
     return (
-        <CommentList comments={comments} />
+        <CommentList comments={comments} book={book} startComments={startComments}/>
     )
 }
 

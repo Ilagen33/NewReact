@@ -1,18 +1,30 @@
 //IMPORT REACT
-import React from 'react';
+import React, { useState } from 'react';
+import Post from './api/post'
 
 //IMPORT BOOTSTRAP
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function AddComment () {
+function AddComment ({book, startComments}) {
+    const [recensione, setRecensione] = useState("");
+    const [voto, setVoto] = useState("");
+
     return (
-        <Form>
+        <Form onSubmit={(e) => {
+            e.preventDefault();
+            const data = {
+                comment: recensione,
+                rate: voto,
+                elementId: book.asin
+            };
+            Post({data, startComments});
+        }}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Scrivi una recensione:</Form.Label>
-                <Form.Control type="text" placeholder="Scrivi qui..." required/>
+                <Form.Control type="text" placeholder="Scrivi qui..." value={recensione} onChange={(e) => setRecensione(e.target.value)} required/>
             </Form.Group>
-            <Form.Select aria-label="Default select example" required>
+            <Form.Select aria-label="Default select example" value={voto} onChange={(e) => setVoto(e.target.value)}required>
                 <option>Valuta da 1 a 5</option>
                 <option value="1">Uno</option>
                 <option value="2">Due</option>
@@ -20,7 +32,7 @@ function AddComment () {
                 <option value="4">Quattro</option>
                 <option value="5">Cinque</option>
             </Form.Select>
-            <Button variant="outline-info" className='mt-3'>Info</Button>
+            <Button variant="outline-info" className='mt-3' type='submit'>Invia Recensione</Button>
         </Form>
     )
 }

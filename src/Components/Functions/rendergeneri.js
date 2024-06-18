@@ -16,7 +16,7 @@ const RenderGenres = ({ generi, selectedGenre, setSelectedGenre }) => {
                 // In modo tale che al click su un genere, questi spariscano e lascino spazio al render dei libri
                 <Card 
                     key={index}  
-                    className={`my-5 ${selectedGenre === genere ? 'd-none' : ''}`} 
+                    className={`my-5 mx-2 ${selectedGenre === genere ? 'd-none' : ''}`} 
                     border="info" 
                     onClick={() => setSelectedGenre(genere)}
                 >
