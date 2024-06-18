@@ -13,10 +13,10 @@ import MyNav from "./MyNav.jsx";
 import Welcome from "./Welcome.jsx";
 
 //IMPORT FUNZIONI
-import RenderGenres from "./Functions/rendergeneri.js"
-import caricaAltro from "./Functions/carica+.js"
-import RenderBooks from "./Functions/renderbooks.js"
+import RenderGenres from "./rendergeneri.jsx"
+import RenderBooks from "./renderbooks.jsx"
 import Description from "./Description.jsx";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //array contente tutti i generi (utilizzato inizialmente per scegliere il genere passato a RenderGenres)
 const generi = [fantasy, history, horror, romance, scifi]
@@ -31,48 +31,45 @@ const [numToShow, setNumToShow] = useState(12); // Numero iniziale di libri da m
 // const [changeTheme, setChangeTheme] = useContext(Theme);
 
     return (
-        <main>  
-            {/*Aggiungo la NAV*/}
-            <MyNav setSearch={setSearch} setNumToShow={setNumToShow}/>
+        <Router>
+            <main>  
+                {/*Aggiungo la NAV*/}
+                <MyNav setSearch={setSearch} setNumToShow={setNumToShow}/>
 
-            {/*Aggiungo il componente Welcome*/}
-            <Welcome/>
+                {/*Aggiungo il componente Welcome*/}
+                <Welcome/>
 
-            {/*Aggiungo degli h3 descrittivi, per indicare all'utente cosa fare*/}
-            <Description selectedGenre={selectedGenre} />
+                {/*Aggiungo degli h3 descrittivi, per indicare all'utente cosa fare*/}
+                <Description selectedGenre={selectedGenre} />
 
-            {/*Aggiungo un blocco condizionale in cui: se stato selezionato un genere vengono renderizzati i libri,
-            un bottone che torna alla selezione dei generi e un pulsante che carica ulteriori contenuti(se disponibili);
-            altrimenti vengono renderizzati i generi a disposizione*/}
-            {selectedGenre ? (
-                <> 
-                    {/*Al click sul bottone si cambia lo stato della selezione del genere per cui vengono ricaricati i generi per effettuare una nuova selezione*/}
-                    <button onClick={() => {setSelectedGenre(null); setNumToShow(12)}} className="btn btn-outline-info mb-3 mx-2">
-                        Torna ai generi
-                    </button>
-                    <div className="book-list mt-5 container-fluid mx-2">
-                        <div className="row">
-                            {/*Vengono passate le informazioni: sul genere, su ciò che è scritto nel campo di ricerca, e quanti libri mostrare;
-                            poichè sono state incluse delle funzionalità basate su queste informazioni*/}
-                            <RenderBooks selectedGenre={selectedGenre} search={search} numToShow={numToShow} />
-                        </div>
-                    </div>
-
-                    {/*Aggiungo un altro blocco condizionale in cui verifico se la lunghezza dei numeri visualizzare è minore rispetto tutti i libri visualizzabili;
-                    in parole povere verifico se ci sono altri libri da visualizzare o meno;
-                    in base a questa condizione inserisco un bottone che ha la funzione di caricare altri libri nel caso ce ne fossero altri;
-                    una volta che sono stati renderizzati tutti i libri disponibili, non si visualizzerà più il bottone, grazie al blocco condizionale*/}
-                    {numToShow < selectedGenre.length && (
-                    <button onClick={() => caricaAltro(numToShow, setNumToShow)} className="btn btn-outline-info mt-3 mx-2">
-                        Carica Altro
-                    </button>
-                    )}
-                </>
-            ) : (
-                <RenderGenres generi={generi} selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} />
-            )}
-        </main>
-    )
+                {/*Aggiungo un blocco condizionale in cui: se stato selezionato un genere vengono renderizzati i libri,
+                un bottone che torna alla selezione dei generi e un pulsante che carica ulteriori contenuti(se disponibili);
+                altrimenti vengono renderizzati i generi a disposizione*/}
+                <Routes>
+                    <Route 
+                        path="/books/:genre"
+                        element={
+                            <RenderBooks 
+                                selectedGenre={selectedGenre} 
+                                search={search} 
+                                numToShow={numToShow} 
+                                setSelectedGenre={setSelectedGenre}/>
+                        }
+                    />
+                    <Route 
+                        path="/" 
+                        element={
+                            <RenderGenres 
+                                generi={generi} 
+                                selectedGenre={selectedGenre} 
+                                setSelectedGenre={setSelectedGenre} 
+                            />
+                        }
+                    />
+                </Routes>
+            </main>
+        </Router>
+    );
 }
 
 export default Genres;

@@ -1,9 +1,11 @@
 // IMPORT DA BOOTSTRAP
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom';
 
 // Funzione principale
 // Questa funzione crea delle card con il nome del genere dei libri
-const RenderGenres = ({ generi, selectedGenre, setSelectedGenre }) => {
+const RenderGenres = ({ generi, setSelectedGenre }) => {
+    const navigate = useNavigate()
     return (
         // Si effettua un map per ricavare dall'array che contiene tutti gli array dei generi, tutti i generi.
         generi.map((genere, index) => {
@@ -16,9 +18,12 @@ const RenderGenres = ({ generi, selectedGenre, setSelectedGenre }) => {
                 // In modo tale che al click su un genere, questi spariscano e lascino spazio al render dei libri
                 <Card 
                     key={index}  
-                    className={`my-5 mx-2 ${selectedGenre === genere ? 'd-none' : ''}`} 
+                    className={`my-5 mx-2`} 
                     border="info" 
-                    onClick={() => setSelectedGenre(genere)}
+                    onClick={() =>  {   setSelectedGenre(genere);
+                                        navigate(`/books/${name}`)
+                                    }
+                    }
                 >
                     <Card.Body className="py-3 text-info">{name}</Card.Body>
                 </Card>
