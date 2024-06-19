@@ -1,24 +1,27 @@
 //IMPORT REACT USE STATE
-import { useEffect } from "react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //IMPORT COMPONENTI
 import CommentList from "./CommentList"
 import Get from "./api/get"
 
 //Funzione Principale
-function CommentArea (book) {
+function CommentArea ({asin}) {
     //Definisco gli use state, il primo lo uso per il Get e il secondo per il Post
     const [comments, setComments] = useState([]);
 
     function startComments() {
-        Get({setComments, book})
+        if(asin) {
+            Get({setComments, asin});
+        }
     }
+
     useEffect(() => {
-        startComments()
-    }, [book]);
+        startComments();
+    }, [asin]);
+
     return (
-        <CommentList comments={comments} book={book} startComments={startComments}/>
+        <CommentList comments={comments} asin={asin} startComments={startComments}/>
     )
 }
 

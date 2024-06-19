@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import Put from './api/put';
 
-function NewModal({ show, onHide, comment, onUpdate, startComments}) {
+function NewModal({ show, onHide, comment, onUpdate}) {
     const [recensione, setRecensione] = useState("");
     const [voto, setVoto] = useState("");
-    const id= comment._id;
-    console.log(comment)
-    console.log(id)
+    let id= comment._id;
 
     useEffect(() => {
         if (comment) {
@@ -22,7 +20,6 @@ function NewModal({ show, onHide, comment, onUpdate, startComments}) {
             comment: recensione,
             rate: voto
         };
-        console.log(updatedComment)
         Put({id, updatedComment})
         .then(updatedComment => {
             onUpdate(updatedComment); // Invia i dati aggiornati al genitore

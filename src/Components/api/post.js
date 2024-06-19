@@ -11,8 +11,9 @@ function Post ({data, startComments}) {
         },
         body: JSON.stringify(data)
     })
-    .then((response) => {
-        response.json();
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data);
         startComments();
     })
     .catch((error) => console.error("Mannaggia la miseria..." + error))

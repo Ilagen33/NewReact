@@ -7,9 +7,10 @@ import AddComment from "./AddComment"
 import Accordion from 'react-bootstrap/Accordion';
 
 // Funzione principale
-function CommentList ({comments, book, startComments}) {
+function CommentList ({comments, asin, startComments, }) {
     return (
         <>
+            <h6>Recensioni</h6>
             <Accordion defaultActiveKey="0" alwaysOpen>
                 {comments.map((comment, index) => (
                     <Accordion.Item eventKey={index.toString()} key={index}>
@@ -20,7 +21,7 @@ function CommentList ({comments, book, startComments}) {
                     </Accordion.Item>
                 ))}
             </Accordion>
-            <AddComment book={book} startComments={startComments}/>
+            <AddComment asin={asin} startComments={startComments}/>
         </>
     );
 }

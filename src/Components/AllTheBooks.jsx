@@ -47,13 +47,15 @@ const [numToShow, setNumToShow] = useState(12); // Numero iniziale di libri da m
                 altrimenti vengono renderizzati i generi a disposizione*/}
                 <Routes>
                     <Route 
-                        path="/books/:genre"
+                        path="/books/:selectedGenre"
                         element={
                             <RenderBooks 
                                 selectedGenre={selectedGenre} 
                                 search={search} 
                                 numToShow={numToShow} 
-                                setSelectedGenre={setSelectedGenre}/>
+                                setNumToShow={setNumToShow}
+                                setSelectedGenre={setSelectedGenre}
+                                />
                         }
                     />
                     <Route 

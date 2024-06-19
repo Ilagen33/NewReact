@@ -9,8 +9,6 @@ import { Col } from "react-bootstrap";
 //Crea una card per ogni libro, se selezionato crea un bordo rosso
 //ricavo i dati dalla prop (book) 
 function SingleBook({book, setSelected, selected}) {
-  console.log(book)
-
     return (
       <Col xs="auto" className="px-0 mx-1">
         <Card style={{ width: '18rem' }} className={`mb-2 px-0`} border={`${selected === book.asin ? 'danger' : ''}`} onClick={() => setSelected(book.asin)}>

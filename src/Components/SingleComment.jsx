@@ -11,8 +11,10 @@ import Delete from './api/delete';
 function SingleComment ({comment, startComments}) {
     const [showModal, setShowModal] = useState(false);
     const [currentComment, setCurrentComment] = useState(comment);
+    
 
     const handleUpdateComment = (updatedComment) => {
+        console.log(updatedComment)
         setCurrentComment(updatedComment);
         setShowModal(false);
         startComments();
@@ -41,9 +43,8 @@ function SingleComment ({comment, startComments}) {
              <NewModal
              show={showModal}
              onHide={() => setShowModal(false)}
-             comment={currentComment}
+             comment={comment}
              onUpdate={handleUpdateComment}
-             startComments={startComments}
             />
         </>
     )

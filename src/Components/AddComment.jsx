@@ -6,17 +6,16 @@ import Post from './api/post'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function AddComment ({book, startComments}) {
+function AddComment ({asin, startComments}) {
     const [recensione, setRecensione] = useState("");
     const [voto, setVoto] = useState("");
-
     return (
         <Form onSubmit={(e) => {
             e.preventDefault();
             const data = {
                 comment: recensione,
                 rate: voto,
-                elementId: book.asin
+                elementId: asin
             };
             Post({data, startComments});
         }}>
