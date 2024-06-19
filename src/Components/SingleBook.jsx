@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 //IMPORT COMPONENTI
 import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 //Funzione principale
 //Crea una card per ogni libro, se selezionato crea un bordo rosso
@@ -16,8 +17,8 @@ function SingleBook({book, setSelected, selected}) {
           <Card.Body>
             <Card.Title>{book.title}</Card.Title>
             <Card.Text>
-              {book.price}
-              {book.asin}
+              <p>${book.price}</p>
+              <Link/>
             </Card.Text>
           </Card.Body>
         </Card>

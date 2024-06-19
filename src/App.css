@@ -6,7 +6,6 @@ h1 {
 
 .card-body {
   font-size: 20px;
-  font-weight: 700;
 }
 
 .book-list .card img {
@@ -24,7 +23,5 @@ h1 {
 
 .book-list .card-title {
   font-size: 20px;
-  max-height: 100px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+
 }
