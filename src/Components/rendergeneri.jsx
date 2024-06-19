@@ -16,17 +16,20 @@ const RenderGenres = ({ generi, setSelectedGenre }) => {
                 // Se lo stato selectedGenre corrisponde a genere, allora la card non sarà visibile.
                 // Al click della card viene modificato lo stato selectedGenre e viene impostato al genere cliccato.
                 // In modo tale che al click su un genere, questi spariscano e lascino spazio al render dei libri
-                <Card 
-                    key={index}  
-                    className={`my-5 mx-2`} 
-                    border="info" 
-                    onClick={() =>  {   setSelectedGenre(genere);
-                                        navigate(`/books/${name}`)
-                                    }
-                    }
-                >
-                    <Card.Body className="py-3 text-info">{name}</Card.Body>
-                </Card>
+                <>
+                    <h3>Scegli tra uno dei seguenti generi:</h3>
+                    <Card 
+                        key={index}  
+                        className={`my-5 mx-2`} 
+                        border="info" 
+                        onClick={() =>  {   setSelectedGenre(genere);
+                                            navigate(`/books/${name}`)
+                                        }
+                        }
+                    >
+                        <Card.Body className="py-3 text-info">{name}</Card.Body>
+                    </Card>
+                </>
             );
         })
     );

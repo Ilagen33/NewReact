@@ -1,7 +1,6 @@
 //IMPORT COMPONENTE SINGLEBOOK
 import { Col, Row } from "react-bootstrap";
 import SingleBook from "./SingleBook";
-import CommentArea from "./Reviews";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CaricaAltro from "./Functions/carica+";
@@ -28,9 +27,10 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
             >
                 Torna ai generi
             </button>
-
+            
+            <h3>Scegli tra uno dei seguenti libri:</h3>
             <Col className="book-list container-fluid mx-2">
-                <Row>
+                <Row className="d-flex justify-content-center">
                     {selectedGenre
                         .filter((book) => book.title
                                             .toLowerCase()
@@ -52,11 +52,6 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
                     </button>
                 )}
             </Col>
-
-            <Col xs lg="2">
-                <CommentArea asin={selected}/>
-            </Col>
-
         </Row>
     )
 }
