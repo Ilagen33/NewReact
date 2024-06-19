@@ -12,9 +12,8 @@ async function Put({ id, updatedComment}) {
         if (!response.ok) {
             throw new Error('Errore nella richiesta PUT');
         }
-
-        
         return response.json(); // Ritorno della promessa contenente i dati JSON
+    
     } catch (error) {
         console.error('Errore nella richiesta PUT:', error);
         throw error; // Rilancia l'errore per gestirlo più in alto, se necessario

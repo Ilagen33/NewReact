@@ -7,7 +7,7 @@ import AddComment from "./AddComment"
 import Accordion from 'react-bootstrap/Accordion';
 
 // Funzione principale
-function CommentList ({comments, asin, startComments, }) {
+function CommentList ({comments, asin, startComments }) {
     return (
         <>
             <h6>Recensioni</h6>

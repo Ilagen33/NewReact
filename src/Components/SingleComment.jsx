@@ -23,11 +23,12 @@ function SingleComment ({comment, startComments}) {
     const handleDelete = async (comment) => {
         try {
             await Delete(comment._id); // Attendere che l'eliminazione sia completata
-            startComments(); // Chiamare startComments solo dopo che l'eliminazione è stata completata con successo
+             // Chiamare startComments solo dopo che l'eliminazione è stata completata con successo
         } catch (error) {
             console.error('Errore durante l\'eliminazione del commento:', error);
             // Gestire eventuali errori qui, se necessario
         }
+        startComments();
     };
 
     return (

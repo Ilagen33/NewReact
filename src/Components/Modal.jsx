@@ -23,8 +23,7 @@ function NewModal({ show, onHide, comment, onUpdate}) {
         Put({id, updatedComment})
         .then(updatedComment => {
             onUpdate(updatedComment); // Invia i dati aggiornati al genitore
-            onHide(); // Chiudi il modal dopo aver salvato le modifiche
-            
+            onHide(); // Chiudi il modal dopo aver salvato le modifiche 
         })
         .catch(error => {
             console.error('Errore nella modifica del commento:', error);
