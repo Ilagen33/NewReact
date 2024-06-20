@@ -23,14 +23,14 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
                                     setNumToShow(12)
                                     navigate('/')}
                             } 
-                    className="btn btn-outline-info mb-3 mx-2"
+                    className="btn btn-outline-info mb-3 ms-3"
             >
                 Torna ai generi
             </button>
             
-            <h3>Scegli tra uno dei seguenti libri:</h3>
-            <Col className="book-list container-fluid mx-2">
-                <Row className="d-flex justify-content-center">
+            <h3 className="my-5 ms-2">Scegli tra uno dei seguenti libri:</h3>
+            <Col className="book-list container-fluid mx-5">
+                <Row className="d-flex justify-content-center mx-5">
                     {selectedGenre
                         .filter((book) => book.title
                                             .toLowerCase()
@@ -45,12 +45,12 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
                             />       
                         ))
                     }
+                    {numToShow < selectedGenre.length && (
+                        <button onClick={() => CaricaAltro(numToShow, setNumToShow)} className="btn btn-outline-info mt-3">
+                            Carica Altro
+                        </button>
+                    )}
                 </Row>
-                {numToShow < selectedGenre.length && (
-                    <button onClick={() => CaricaAltro(numToShow, setNumToShow)} className="btn btn-outline-info mt-3 mx-2">
-                        Carica Altro
-                    </button>
-                )}
             </Col>
         </Row>
     )
