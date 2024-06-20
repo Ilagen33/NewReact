@@ -7,14 +7,17 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Theme } from "../Modules/Context";
+import { Theme } from '../Modules/Context'
 
 //Funzione principale
 function MyNav({ setSearch, setNumToShow }) {
-
   {/*Creo uno useContext per poter modificare il tema dell'app */}
-  const { theme, setTheme } = useContext(Theme); // Corretta utilizzazione di useContext
+  const themeContext = useContext(Theme);
+  const { theme, setTheme } = themeContext;
+  // Corretta utilizzazione di useContext
+  console.log("Theme context in MyNav:", { theme, setTheme });
 
+  console.log(Theme)
   {/*Creo uno stato per tener traccio di ciò che viene scritto nella Search bar, utilizzato in seguito per una funzionalità di ricerca*/}
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -33,7 +36,7 @@ function MyNav({ setSearch, setNumToShow }) {
 
     //La funzione in generale ritorna una navbar di Boostrap con all'interno un form per effettuare una ricerca
     <header>
-      <Navbar expand="lg" className="bg-black text-white">
+      <Navbar expand="lg" className={`bg-${theme} text-${theme === 'light' ? 'dark' : 'white'}`}>
         <Container fluid>
           <Navbar.Brand href="#">
             <img

@@ -22,10 +22,12 @@ const RenderGenres = ({ generi, setSelectedGenre }) => {
                         key={index}  
                         className={`my-5 mx-2`} 
                         border="info" 
+                        data-testid="generi"
                         onClick={() =>  {   setSelectedGenre(genere);
                                             navigate(`/books/${name}`)
                                 }
                         }
+                        
                     >
                         <Card.Body className="py-3 text-info">{name}</Card.Body>
                     </Card>

@@ -13,7 +13,13 @@ function SingleBook({book, setSelected, selected}) {
   const navigate = useNavigate();
     return (
       <Col xs="auto" className="px-0 mx-1">
-        <Card style={{ width: '18rem' }} className={`mb-2 px-0`} border={`${selected === book.asin ? 'danger' : ''}`} onClick={() => setSelected(book.asin)}>
+        <Card 
+          style={{ width: '18rem' }} 
+          className={`mb-2 px-0`} 
+          border={`${selected === book.asin ? 'danger' : ''}`} 
+          onClick={() => setSelected(book.asin)}
+          data-testid="cardBooks"
+        >
           <Card.Img variant="top" src={book.img} />
           <Card.Body>
             <Card.Title>{book.title}</Card.Title>

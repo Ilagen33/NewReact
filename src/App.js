@@ -12,8 +12,9 @@ import { useState } from "react";
 
 function App() {
 
-  let [theme, setTheme] = useState('light')
-  console.log(theme)
+  let [theme, setTheme] = useState('light');
+  console.log("Theme context in App:", { theme, setTheme });;
+
   return (
     <>
       <Theme.Provider value={{theme, setTheme}}>
