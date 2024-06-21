@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Welcome from "./Components/Welcome";
 import App from "./App"
-import SingleBook from "./Components/SingleBook";
 import '@testing-library/jest-dom';
+import SingleComment from "./Components/SingleComment";
 
 
 test("Verifico se viene caricato correttamente il componente Welcome", () => {
@@ -69,4 +69,16 @@ test("Verifico che cliccando su un secondo libro dopo il primo, il bordo del pri
     const secondBook = allBooks[1]
     fireEvent.click(secondBook)
     expect(firstBook).not.toHaveStyle("border: 2px solid red")
+    const backToGenres = screen.getByTestId("backToGenres")
+    fireEvent.click(backToGenres)
+})
+
+test("Verifica che, cliccando su un libro, le recensioni vengano correttamente caricate all'interno del DOM. ", async () => {
+    render(<App />)
+    const generi = screen.getAllByTestId("generi")
+    fireEvent.click(generi[0])
+    const details = screen.getAllByRole("button", {name:/details/i})
+    fireEvent.click(details[0])
+    const comments =  await screen.findAllByTestId("singleComment")
+    expect(comments[0]).toBeInTheDocument()
 })

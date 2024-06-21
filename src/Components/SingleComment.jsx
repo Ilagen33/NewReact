@@ -11,7 +11,7 @@ import Delete from './api/delete';
 function SingleComment ({comment, startComments}) {
     const [showModal, setShowModal] = useState(false);
     const [currentComment, setCurrentComment] = useState(comment);
-    
+    console.log(currentComment)
 
     const handleUpdateComment = (updatedComment) => {
         console.log(updatedComment)
@@ -36,16 +36,29 @@ function SingleComment ({comment, startComments}) {
             <Accordion.Body>
                 <p>{comment.comment}</p>
                 <span>{comment.rate}</span>
+
                 <ButtonGroup 
-                    aria-label="Basic example">
+                    aria-label="Basic example"
+                >
+
                     <Button 
                         variant="warning" 
-                        onClick={()=>setShowModal(true)}>Modifica</Button>
+                        onClick={()=>setShowModal(true)}
+                    >
+                        Modifica
+                    </Button>
+
                     <Button 
                         variant="danger" 
-                        onClick={()=>handleDelete(comment)}>Elimina</Button>
+                        onClick={()=>handleDelete(comment)}
+                    > 
+                        Elimina
+                    </Button>
+
                 </ButtonGroup>
+
             </Accordion.Body>
+            
              <NewModal
                 show={showModal}
                 onHide={() => setShowModal(false)}

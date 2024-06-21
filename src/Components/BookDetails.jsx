@@ -27,7 +27,6 @@ function BookDetails({selectedGenre, generi}) {
             <Button 
                 onClick={() => navigate('/')} 
                 variant="dark" 
-                generi={generi}
                 data-testid="backToHome"
             >
                 Torna ai generi

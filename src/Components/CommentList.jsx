@@ -19,14 +19,21 @@ function CommentList ({comments, asin, startComments }) {
             >
                 {comments.map((comment, index) => (
                     
-                    <Accordion.Item eventKey={index.toString()} key={index}>
+                    <Accordion.Item 
+                        eventKey={index.toString()} 
+                        key={index} 
+                        data-testid="singleComment"
+                    >
                         
                         <Accordion.Header>Comment {index + 1}</Accordion.Header>
                         
                         <Accordion.Body>
-                            <SingleComment comment={comment} startComments={startComments} />
+                            <SingleComment 
+                                comment={comment} 
+                                startComments={startComments}
+                            />
                         </Accordion.Body>
-                        
+
                     </Accordion.Item>
 
                 ))}

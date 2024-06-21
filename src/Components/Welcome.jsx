@@ -17,7 +17,10 @@ function Welcome() {
             <h1>Welcome on Epi-Books!</h1>
 
             {/*L'alert sfrutta lo stato precedentemente descritto: se il valore dello stato è true, si visualizza l'alert*/}
-            <Alert show={show} variant="info">
+            <Alert 
+              show={show} 
+              variant="info"
+            >
               <Alert.Heading>Welcome</Alert.Heading>
               <p>
                 Benvenuto nella Web-App di libri epici. Qui potrai trovare tante letture interessanti e ricercate. Assurdo no? Cosa aspetti! <br /> 
@@ -25,16 +28,28 @@ function Welcome() {
                 Seleziona il genere che preferisci e scopri la nostra fantastica raccolta!
               </p>
               <hr />
+
               <div className="d-flex justify-content-end">
                 {/*Al Bottone dell'alert viene data la funzione onClick che modifica lo stato di "show" e lo rende false (in modo tale da comprimere l'alert)*/}
-                <Button onClick={() => setShow(false)} variant="outline-info" className='mx-2'>
+                <Button 
+                  onClick={() => setShow(false)} 
+                  variant="outline-info" 
+                  className='mx-2'
+                >
                   Close
                 </Button>
               </div>
+
             </Alert>
             {/*Aggiungo un blocco condizionale, se show è false allora si ha un bottone che al click modifica show, lo rende true,
              così da poter visualizzare l'alert (che con false non è visibile)*/}
-            {!show && <Button onClick={() => setShow(true)} variant="outline-info" className='mx-2'>Raed our Message for You!</Button>}
+            {!show && <Button 
+                          onClick={() => setShow(true)} 
+                          variant="outline-info" 
+                          className='mx-2'
+                      >
+                        Raed our Message for You!
+                      </Button>}
         </section>
     )
 }

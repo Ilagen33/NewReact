@@ -11,21 +11,10 @@ import { Theme } from '../Modules/Context'
 
 //Funzione principale
 function MyNav({ setSearch, setNumToShow }) {
-  {/*Creo uno useContext per poter modificare il tema dell'app */}
   const themeContext = useContext(Theme);
   const { theme, setTheme } = themeContext;
-  // Corretta utilizzazione di useContext
-  console.log("Theme context in MyNav:", { theme, setTheme });
-
-  console.log(Theme)
-  {/*Creo uno stato per tener traccio di ciò che viene scritto nella Search bar, utilizzato in seguito per una funzionalità di ricerca*/}
   const [searchTerm, setSearchTerm] = useState('');
 
-  {/* Creo una funziona che gestisce il submit della ricerca (sia l'invio della tastiera nel form input sia sul tasto di ricerca)
-      1) Evito il comportamento di default all'invio del form, per evitare di refreshare la pagina;
-      2) Imposto come valore da ricercare ciò che viene scritto nel form;
-      3) Riporto il numero di libri renderizzati a 12, (se in precedenza si clicca su Carica Altro si va ad aumentare la quantità di libri da caricare,
-      al momento della ricerca non refreshando la pagina ilnumero rimane invariato, per questo motivo ri riporta questo numero al suo valore originale*/}
   const handleSubmit = (e) => {
       e.preventDefault();
       setSearch(searchTerm);

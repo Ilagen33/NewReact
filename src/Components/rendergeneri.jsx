@@ -29,7 +29,11 @@ const RenderGenres = ({ generi, setSelectedGenre }) => {
                         }
                         
                     >
-                        <Card.Body className="py-3 text-info">{name}</Card.Body>
+                        <Card.Body 
+                            className="py-3 text-info"
+                        >
+                            {name}
+                        </Card.Body>
                     </Card>
                 );
             })}

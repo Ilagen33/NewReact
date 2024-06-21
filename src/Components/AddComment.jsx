@@ -19,19 +19,45 @@ function AddComment ({asin, startComments}) {
             };
             Post({data, startComments});
         }}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group 
+                className="mb-3" 
+                controlId="exampleForm.ControlInput1"
+            >
                 <Form.Label>Scrivi una recensione:</Form.Label>
-                <Form.Control type="text" placeholder="Scrivi qui..." value={recensione} onChange={(e) => setRecensione(e.target.value)} required/>
+
+                <Form.Control 
+                    type="text" 
+                    placeholder="Scrivi qui..." 
+                    value={recensione} 
+                    onChange={(e) => setRecensione(e.target.value)} 
+                    required
+                />
+
             </Form.Group>
-            <Form.Select aria-label="Default select example" value={voto} onChange={(e) => setVoto(e.target.value)}required>
+
+            <Form.Select 
+                aria-label="Default select example" 
+                value={voto} 
+                onChange={(e) => setVoto(e.target.value)}
+                required
+            >
+
                 <option>Valuta da 1 a 5</option>
                 <option value="1">Uno</option>
                 <option value="2">Due</option>
                 <option value="3">Tre</option>
                 <option value="4">Quattro</option>
                 <option value="5">Cinque</option>
+
             </Form.Select>
-            <Button variant="outline-info" className='mt-3' type='submit'>Invia Recensione</Button>
+            
+            <Button 
+                variant="outline-info" 
+                className='mt-3'
+                type='submit'
+            >
+                Invia Recensione
+            </Button>
         </Form>
     )
 }

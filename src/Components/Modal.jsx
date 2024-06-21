@@ -31,13 +31,23 @@ function NewModal({ show, onHide, comment, onUpdate}) {
     };
 
     return (
-        <Modal show={show} onHide={onHide}>
+        <Modal 
+            show={show} 
+            onHide={onHide}
+        >
+
             <Modal.Header closeButton>
                 <Modal.Title>Modifica Recensione</Modal.Title>
             </Modal.Header>
+
             <Modal.Body>
+
                 <Form>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+
+                    <Form.Group 
+                        className="mb-3" 
+                        controlId="exampleForm.ControlInput1"
+                    >
                         <Form.Label>Scrivi una recensione:</Form.Label>
                         <Form.Control
                             type="text"
@@ -47,6 +57,7 @@ function NewModal({ show, onHide, comment, onUpdate}) {
                             required
                         />
                     </Form.Group>
+
                     <Form.Select aria-label="Default select example" value={voto} onChange={(e) => setVoto(e.target.value)} required>
                         <option>Valuta da 1 a 5</option>
                         <option value="1">Uno</option>
@@ -55,11 +66,27 @@ function NewModal({ show, onHide, comment, onUpdate}) {
                         <option value="4">Quattro</option>
                         <option value="5">Cinque</option>
                     </Form.Select>
+
                 </Form>
+
             </Modal.Body>
+
             <Modal.Footer>
-                <Button variant="secondary" onClick={onHide}>Chiudi</Button>
-                <Button variant="primary" onClick={handleSaveClick}>Salva Modifiche</Button>
+
+                <Button 
+                    variant="secondary" 
+                    onClick={onHide}
+                >
+                    Chiudi
+                </Button>
+
+                <Button 
+                    variant="primary" 
+                    onClick={handleSaveClick}
+                >
+                    Salva Modifiche
+                </Button>
+
             </Modal.Footer>
         </Modal>
     );
