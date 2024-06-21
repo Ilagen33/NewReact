@@ -47,3 +47,13 @@ test("Verifico che il filtraggio dei libri nella NavBar funzioni come previsto",
     const backToGenres = screen.getByTestId("backToGenres")
     fireEvent.click(backToGenres)
 })
+
+test("Verifico che cliccando su un libro, il suo bordo cambi colore", () => {
+    render(<App />)
+    const generi = screen.getAllByTestId("generi")
+    fireEvent.click(generi[0])
+    const allBooks = screen.getAllByTestId("cardBooks")
+    const firstBook = allBooks[0]
+    fireEvent.click(firstBook)
+    expect(firstBook).toHaveStyle("border: danger")
+})
