@@ -56,4 +56,17 @@ test("Verifico che cliccando su un libro, il suo bordo cambi colore", () => {
     const firstBook = allBooks[0]
     fireEvent.click(firstBook)
     expect(firstBook).toHaveStyle("border: danger")
+    const backToGenres = screen.getByTestId("backToGenres")
+    fireEvent.click(backToGenres)
+})
+
+test("Verifico che cliccando su un secondo libro dopo il primo, il bordo del primo ritorni normale", () => {
+    render(<App />)
+    const generi = screen.getAllByTestId("generi")
+    fireEvent.click(generi[0])
+    const allBooks = screen.getAllByTestId("cardBooks")
+    const firstBook = allBooks[0]
+    const secondBook = allBooks[1]
+    fireEvent.click(secondBook)
+    expect(firstBook).not.toHaveStyle("border: 2px solid red")
 })
