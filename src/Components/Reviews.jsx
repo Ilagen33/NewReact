@@ -21,7 +21,11 @@ function CommentArea ({asin}) {
     }, [asin]);
 
     return (
-        <CommentList comments={comments} asin={asin} startComments={startComments}/>
+        <CommentList 
+            comments={comments} 
+            asin={asin} 
+            startComments={startComments}   
+        />
     )
 }
 

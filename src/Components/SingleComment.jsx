@@ -36,16 +36,21 @@ function SingleComment ({comment, startComments}) {
             <Accordion.Body>
                 <p>{comment.comment}</p>
                 <span>{comment.rate}</span>
-                <ButtonGroup aria-label="Basic example">
-                    <Button variant="warning" onClick={()=>setShowModal(true)}>Modifica</Button>
-                    <Button variant="danger" onClick={()=>handleDelete(comment)}>Elimina</Button>
+                <ButtonGroup 
+                    aria-label="Basic example">
+                    <Button 
+                        variant="warning" 
+                        onClick={()=>setShowModal(true)}>Modifica</Button>
+                    <Button 
+                        variant="danger" 
+                        onClick={()=>handleDelete(comment)}>Elimina</Button>
                 </ButtonGroup>
             </Accordion.Body>
              <NewModal
-             show={showModal}
-             onHide={() => setShowModal(false)}
-             comment={comment}
-             onUpdate={handleUpdateComment}
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                comment={comment}
+                onUpdate={handleUpdateComment}
             />
         </>
     )

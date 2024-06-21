@@ -11,17 +11,31 @@ function CommentList ({comments, asin, startComments }) {
     return (
         <>
             <h6>Recensioni</h6>
-            <Accordion defaultActiveKey="0" alwaysOpen>
+
+            <Accordion 
+                defaultActiveKey="0" 
+                alwaysOpen
+                data-testid="commentList" 
+            >
                 {comments.map((comment, index) => (
+                    
                     <Accordion.Item eventKey={index.toString()} key={index}>
+                        
                         <Accordion.Header>Comment {index + 1}</Accordion.Header>
+                        
                         <Accordion.Body>
                             <SingleComment comment={comment} startComments={startComments} />
                         </Accordion.Body>
+                        
                     </Accordion.Item>
+
                 ))}
             </Accordion>
-            <AddComment asin={asin} startComments={startComments}/>
+
+            <AddComment 
+                asin={asin} 
+                startComments={startComments}
+            />
         </>
     );
 }

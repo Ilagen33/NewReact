@@ -25,11 +25,11 @@ const generi = [fantasy, history, horror, romance, scifi]
 //Funzione principale
 function Genres() {
 
-// Stati per gestire il genere selezionato, la ricerca e il numero di libri da mostrare
-const [selectedGenre, setSelectedGenre] = useState(null); // Genere selezionato
-const [search, setSearch] = useState(''); // Ricerca
-const [numToShow, setNumToShow] = useState(12); // Numero iniziale di libri da mostrare = 12   
-// const [changeTheme, setChangeTheme] = useContext(Theme);
+    // Stati per gestire il genere selezionato, la ricerca e il numero di libri da mostrare
+    const [selectedGenre, setSelectedGenre] = useState(null); // Genere selezionato
+    const [search, setSearch] = useState(''); // Ricerca
+    const [numToShow, setNumToShow] = useState(12); // Numero iniziale di libri da mostrare = 12   
+    // const [changeTheme, setChangeTheme] = useContext(Theme);
 
     return (
         <Router>

@@ -7,6 +7,7 @@ import CaricaAltro from "./Functions/carica+";
 
 //Funzione prende come valori: il genere selezionato, la stringa scritta nel form di ricerca e il numero di libri da caricare
 const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelectedGenre}) => {
+    console.log(selectedGenre)
     //la funzione ritorna SingleBook al quale viene passato il dato book
     //book viene ricavato da selectedGenre, cioè dall'array del genere selezionato;
     //dall'array vengono filtrati i risultati in base alla stringa di ricerca (search),
@@ -24,6 +25,7 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
                                     navigate('/')}
                             } 
                     className="btn btn-outline-info mb-3 ms-3"
+                    data-testid="backToGenres"
             >
                 Torna ai generi
             </button>
@@ -31,7 +33,7 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
             <h3 className="my-5 ms-2">Scegli tra uno dei seguenti libri:</h3>
             <Col className="book-list container-fluid mx-5">
                 <Row className="d-flex justify-content-center mx-5">
-                    {selectedGenre
+                    {selectedGenre && selectedGenre
                         .filter((book) => book.title
                                             .toLowerCase()
                                             .includes(search.toLowerCase()))
@@ -45,7 +47,7 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
                             />       
                         ))
                     }
-                    {numToShow < selectedGenre.length && (
+                    {selectedGenre && numToShow < selectedGenre.length && (
                         <button onClick={() => CaricaAltro(numToShow, setNumToShow)} className="btn btn-outline-info mt-3">
                             Carica Altro
                         </button>
