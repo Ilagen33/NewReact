@@ -20,10 +20,12 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
     return(
         <Row className="container-fluid mt-5">
 
-            <button onClick={() => {setSelectedGenre(null)
-                                    setNumToShow(12)
-                                    navigate('/')}
-                            } 
+            <button 
+                    onClick={() => {
+                        setSelectedGenre(null)
+                        setNumToShow(12)
+                        navigate('/')}
+                    } 
                     className="btn btn-outline-info mb-3 ms-3"
                     data-testid="backToGenres"
             >
@@ -34,9 +36,11 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
             <Col className="book-list container-fluid mx-5">
                 <Row className="d-flex justify-content-center mx-5">
                     {selectedGenre && selectedGenre
-                        .filter((book) => book.title
-                                            .toLowerCase()
-                                            .includes(search.toLowerCase()))
+                        .filter((book) => 
+                            book.title
+                            .toLowerCase()
+                            .includes(search.toLowerCase())
+                        )
                         .slice(0, numToShow)
                         .map((book, index) => (
                             <SingleBook 
@@ -48,7 +52,10 @@ const RenderBooks = ({selectedGenre, search, numToShow, setNumToShow, setSelecte
                         ))
                     }
                     {selectedGenre && numToShow < selectedGenre.length && (
-                        <button onClick={() => CaricaAltro(numToShow, setNumToShow)} className="btn btn-outline-info mt-3">
+                        <button 
+                            onClick={() => CaricaAltro(numToShow, setNumToShow)} 
+                            className="btn btn-outline-info mt-3"
+                        >
                             Carica Altro
                         </button>
                     )}
