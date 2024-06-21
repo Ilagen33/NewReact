@@ -11,19 +11,28 @@ function BookDetails({selectedGenre, generi}) {
     
     return (
         <Row className="mx-2 ps-5">
+
             <Col sm={8}>
                 <h2>{book.title}</h2>
                 <img src={book.img} alt="Book Cover" className="ms-5"/>
                 <h5>${book.price}</h5>
                 <h6>Category: "<Link to="/books/:selectedGenre">{book.category}</Link>"</h6>
                 <p>Code: "{book.asin}"</p>
-            </Col>
+            </Col>  
+
             <Col sm={4} >
                 <CommentArea asin={asin}/>
             </Col>
-            <Button onClick={() => navigate('/')} variant="dark" generi={generi}>
+
+            <Button 
+                onClick={() => navigate('/')} 
+                variant="dark" 
+                generi={generi}
+                data-testid="backToHome"
+            >
                 Torna ai generi
             </Button>
+
         </Row>
     )
 }

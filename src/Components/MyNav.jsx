@@ -36,8 +36,14 @@ function MyNav({ setSearch, setNumToShow }) {
 
     //La funzione in generale ritorna una navbar di Boostrap con all'interno un form per effettuare una ricerca
     <header>
-      <Navbar expand="lg" className={`bg-${theme} text-${theme === 'light' ? 'dark' : 'white'}`}>
+
+      <Navbar 
+        expand="lg" 
+        className={`bg-${theme} text-${theme === 'light' ? 'dark' : 'white'}`}
+      >
+
         <Container fluid>
+
           <Navbar.Brand href="#">
             <img
               alt="Logo-book"
@@ -47,17 +53,41 @@ function MyNav({ setSearch, setNumToShow }) {
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
+
           <Navbar.Collapse id="navbarScroll">
+
             <Nav
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="#" className="text-white">Home</Nav.Link>
-              <Nav.Link href="#" className="text-white">About</Nav.Link>
-              <Nav.Link href="#" className="text-white">Browse</Nav.Link>
+              <Nav.Link 
+                href="#" 
+                className="text-white"
+              >
+                Home
+              </Nav.Link>
+              <Nav.Link
+                href="#" 
+                className="text-white"
+              >
+                About
+              </Nav.Link>
+              <Nav.Link 
+                href="#" 
+                className="text-white"
+              >
+                Browse
+              </Nav.Link>
+
             </Nav>
-            <Button variant="light" className="pt-0 px-2 me-2 rounded-circle" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+
+            <Button 
+              variant="light" 
+              className="pt-0 px-2 me-2 rounded-circle" 
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            >
+
             { theme === 'light' ? ( 
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill={theme} className="bi bi-moon" viewBox="0 0 16 16">
                 <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
@@ -68,7 +98,12 @@ function MyNav({ setSearch, setNumToShow }) {
               )}
 
             </Button>
-            <Form className="d-flex" onSubmit={handleSubmit}>
+
+            <Form 
+              className="d-flex" 
+              onSubmit={handleSubmit}
+            >
+
               <Form.Control
                 type="search"
                 placeholder="Search"
@@ -76,16 +111,28 @@ function MyNav({ setSearch, setNumToShow }) {
                 aria-label="Search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                role="input"
               />
-              <Button variant="outline-light" onClick={handleSubmit} type="submit">
+
+              <Button 
+                variant="outline-light" 
+                onClick={handleSubmit} 
+                type="submit"
+                role="submit"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg>
               </Button>
+
             </Form>
+
           </Navbar.Collapse>
+
         </Container>
+
       </Navbar>
+
     </header>
   );
 }
