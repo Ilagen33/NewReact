@@ -1,11 +1,15 @@
 //IMPORT REACT
 import React, { useState } from 'react';
+
+//IMPORT COMPONENTE
 import Post from './api/post'
 
 //IMPORT BOOTSTRAP
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+//Funzione principale che riceve due props: asin e startComments
+//Utilizzo due useState per ricavare i valori da inserire nel commento: il testo e il voto
 function AddComment ({asin, startComments}) {
     const [recensione, setRecensione] = useState("");
     const [voto, setVoto] = useState("");
